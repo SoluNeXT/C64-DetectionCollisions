@@ -38,7 +38,7 @@ main:
 		lda #0
 		sta VIC.BORDER_COLOR
 
-		:WaitRasterLine(254)
+		:WaitRasterLine(260)
 
 		lda #5
 		sta VIC.BORDER_COLOR
@@ -249,6 +249,10 @@ calculerYScreen:
 		lsr
 		lsr
 		tay
+		cpy #25  // Attention, max = 24
+		bcc ok
+		ldy #24
+	ok:
 		rts
 
 
