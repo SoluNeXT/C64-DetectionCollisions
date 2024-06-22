@@ -16,16 +16,16 @@
 
 
 
-	lda #rasterLine
 	.if(rasterLine>255)  // 256 => 311
 	{
 			pha
 			txa
 			pha
-			!:
+			lda #rasterLine
+		!:
 			ldx VIC.RASTER_MSB
 			bpl !-
-
+	
 			cmp VIC.RASTER
 			bne !-
 			pla
@@ -37,6 +37,7 @@
 			pha
 			txa
 			pha
+			lda #rasterLine
 		!:
 			ldx VIC.RASTER_MSB
 			bmi !-
@@ -50,6 +51,7 @@
 	else
 	{
 			pha
+			lda #rasterLine
 		!:
 			cmp VIC.RASTER
 			bne !-
